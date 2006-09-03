@@ -22,7 +22,7 @@ class RequestController < ApplicationController
     item_name = params[:new_request][:item]
     
     begin
-      @item = Item.find_by_name(item_name)
+      @item = Item.find(:first, :conditions => ['LOWER(name) LIKE ?', "%" + item_name + "%"])
     rescue
       @item = Item.new(:name => item_name)
       @item.save
