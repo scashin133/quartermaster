@@ -11,7 +11,7 @@ ActiveRecord::Schema.define() do
   create_table "purchases", :force => true do |t|
     t.column "user_id", :integer, :limit => 10, :default => 0, :null => false
     t.column "item_id", :integer, :limit => 10, :default => 0, :null => false
-    t.column "created_at", :timestamp
+    t.column "created_at", :datetime
     t.column "cost", :float
   end
 
@@ -22,8 +22,8 @@ ActiveRecord::Schema.define() do
     t.column "user_id", :integer, :limit => 10, :default => 0, :null => false
     t.column "item_id", :integer, :limit => 10, :default => 0, :null => false
     t.column "purchase_id", :integer, :limit => 10, :default => 0, :null => false
-    t.column "created_at", :timestamp
-    t.column "updated_at", :timestamp
+    t.column "created_at", :datetime
+    t.column "updated_at", :datetime
     t.column "quantity", :float
   end
 
