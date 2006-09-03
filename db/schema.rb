@@ -9,7 +9,6 @@ ActiveRecord::Schema.define() do
   end
 
   create_table "purchases", :force => true do |t|
-    t.column "request_id", :integer, :limit => 10, :default => 0, :null => false
     t.column "user_id", :integer, :limit => 10, :default => 0, :null => false
     t.column "item_id", :integer, :limit => 10, :default => 0, :null => false
     t.column "created_at", :timestamp
@@ -18,11 +17,11 @@ ActiveRecord::Schema.define() do
 
   add_index "purchases", ["user_id"], :name => "purchases_FKIndex1"
   add_index "purchases", ["item_id"], :name => "purchases_FKIndex2"
-  add_index "purchases", ["request_id"], :name => "purchases_FKIndex3"
 
   create_table "requests", :force => true do |t|
     t.column "user_id", :integer, :limit => 10, :default => 0, :null => false
     t.column "item_id", :integer, :limit => 10, :default => 0, :null => false
+    t.column "purchase_id", :integer, :limit => 10, :default => 0, :null => false
     t.column "created_at", :timestamp
     t.column "updated_at", :timestamp
     t.column "quantity", :float
@@ -30,6 +29,7 @@ ActiveRecord::Schema.define() do
 
   add_index "requests", ["item_id"], :name => "requests_FKIndex1"
   add_index "requests", ["user_id"], :name => "requests_FKIndex2"
+  add_index "requests", ["purchase_id"], :name => "requests_FKIndex3"
 
   create_table "users", :force => true do |t|
     t.column "username", :string, :limit => 50
