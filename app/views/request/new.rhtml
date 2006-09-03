@@ -1,0 +1,44 @@
+<% 
+    @page_title = "Request an Item"
+%>
+
+<div class="request/create">
+
+    <div class="panel">
+    
+        <div class="title">Request an Item</div>
+        
+        <div class="body">
+        
+            <table>
+            
+                <thead>
+                <tr>                
+                    <th>Item<th>
+                    <th>Last Purchased</th>
+                    <th>Average Consumption Rate</th>
+                    
+                </tr>
+                
+                <tr>
+                    <td><%= text_field "new_request", "item", { :id => "autocomplete_field" }  %></td>
+                </tr>
+                
+                </thead>
+                
+                <tbody id="result_table_body" style="" >
+        
+                </tbody>
+            
+            </table>
+            
+        </div>
+    </div>
+    
+    
+    <%= auto_complete_field "autocomplete_field", 
+        :url => { :controller => "item", :action => "autocomplete_for_item_name" },
+        :update => "result_table_body",
+        :with => "'name=' + $('autocomplete_field').value" %>
+    
+</div>
