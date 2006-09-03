@@ -1,7 +1,7 @@
 class Purchase < ActiveRecord::Base
 
   belongs_to :item
-  belongs_to :request
+  has_one :request
   
 
 end
