@@ -19,9 +19,22 @@ class RequestController < ApplicationController
   
   def create
   
+    item_name = params[:request][:item]
+    
+    begin
+      @item = Item.find_by_title(item_name)
+    rescue
+      @item = Item.new(:name => item_name)
+      @item.save
+    end
+    
+    params[:request].delete :item
+  
     @request = Requests.new params[:request]
     
     if @request.valid?
+      @request.item = @item
+      @request.user = @current_user
       @request.save
       redirect_to :action => "list"
     else
