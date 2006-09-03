@@ -13,13 +13,13 @@ class RequestController < ApplicationController
   
   def new
   
-    @request = Request.new
+    @new_request = Request.new
   
   end
   
   def create
   
-    item_name = params[:request][:item]
+    item_name = params[:new_request][:item]
     
     begin
       @item = Item.find_by_name(item_name)
@@ -28,14 +28,14 @@ class RequestController < ApplicationController
       @item.save
     end
     
-    params[:request].delete :item
+    params[:new_request].delete :item
   
-    @request = Requests.new params[:request]
+    @new_request = Requests.new params[:new_request]
     
-    if @request.valid?
-      @request.item = @item
-      @request.user = @current_user
-      @request.save
+    if @new_request.valid?
+      @new_request.item = @item
+      @new_request.user = @current_user
+      @new_request.save
       redirect_to :action => "list"
     else
       render :action => "new"
