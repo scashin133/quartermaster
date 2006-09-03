@@ -21,12 +21,12 @@
                 </tr>
                 
                 <tr>
-                    <td><%= text_field "new_request", "item", { :id => "autocomplete_field" }  %></td>
+                    <td><%= text_field "new_request", "item" %></td>
                 </tr>
                 
                 </thead>
                 
-                <tbody id="result_table_body" style="" >
+                <tbody id="new_request_item_auto_complete" style="" >
         
                 </tbody>
             
@@ -36,9 +36,7 @@
     </div>
     
     
-    <%= auto_complete_field "autocomplete_field", 
-        :url => { :controller => "item", :action => "autocomplete_for_item_name" },
-        :update => "result_table_body",
-        :with => "'name=' + $('autocomplete_field').value" %>
+    <%= auto_complete_field "new_request_item", 
+        :url => { :controller => "item", :action => "auto_complete_for_item_name" } %>
     
 </div>
