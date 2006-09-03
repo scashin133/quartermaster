@@ -4,6 +4,5 @@ class ItemController < ApplicationController
     @items = Item.find(:all,
       :conditions => [ 'LOWER(name) LIKE ?',
       '%' + request.raw_post.downcase + '%' ])
-    render :inline => '<%= auto_complete_result(@items, "name") %>'
   end
 end
