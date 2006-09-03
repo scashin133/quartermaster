@@ -22,7 +22,7 @@ class RequestController < ApplicationController
     item_name = params[:request][:item]
     
     begin
-      @item = Item.find_by_title(item_name)
+      @item = Item.find_by_name(item_name)
     rescue
       @item = Item.new(:name => item_name)
       @item.save
